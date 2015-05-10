@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html data-ng-app="angularTodo">
+	<head>
+		<meta charset='utf-8'  />
+		<title>Todo App</title>
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+
+        <script src="http://code.angularjs.org/1.3.8/angular.min.js"></script>
+        <script src="main.js"></script>
+	</head>
+	<body ng-controller='mainController'>
+
+        <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Agenda de tareas  <span class="label label-info"> {{tareas.length}}</span></h1>
+        </div>
+
+        <div id="todo-list" class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+
+               <div class="checkbox" ng-repeat='tarea in tareas'>
+                    <label>
+                        <input type="checkbox" ng-click="eliminarTarea(tarea._id)" /> {{tarea.tarea}}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Inserta una nueva tarea" ng-model="formData.tarea">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Prioridad" ng-model="formData.prioridad">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Tipo" ng-model="formData.tipo">
+
+                    </div>
+                    <button class="btn btn-primary btn-lg" ng-click="anadirTarea()">
+                        Añadir
+                    </button>
+                </form>
+            </div>
+        </div>
+	</body>
+</html>
